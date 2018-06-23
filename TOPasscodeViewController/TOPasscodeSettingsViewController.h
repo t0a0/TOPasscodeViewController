@@ -26,9 +26,9 @@
 @class TOPasscodeSettingsViewController;
 
 typedef NS_ENUM(NSInteger, TOPasscodeSettingsViewState) {
-    TOPasscodeSettingsViewStateEnterCurrentPasscode,
-    TOPasscodeSettingsViewStateEnterNewPasscode,
-    TOPasscodeSettingsViewStateConfirmNewPasscode
+  TOPasscodeSettingsViewStateEnterCurrentPasscode,
+  TOPasscodeSettingsViewStateEnterNewPasscode,
+  TOPasscodeSettingsViewStateConfirmNewPasscode
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -42,14 +42,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** Called when the user was prompted to input their current passcode.
  Return YES if passcode was right and NO otherwise.
-
+ 
  Returning NO will cause a warning label to appear
  */
 - (BOOL)passcodeSettingsViewController:(TOPasscodeSettingsViewController *)passcodeSettingsViewController
              didAttemptCurrentPasscode:(NSString *)passcode;
 
 /** Called when the user has successfully set a new passcode. At this point, you should save over
-    the old passcode with the new one. */
+ the old passcode with the new one. */
 - (void)passcodeSettingsViewController:(TOPasscodeSettingsViewController *)passcodeSettingsViewController
                 didChangeToNewPasscode:(NSString *)passcode ofType:(TOPasscodeType)type;
 
@@ -60,7 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  A standard system-styled view controller that users can use to change the passcode
  that they will need to enter for the main passcode view controller.
-
+ 
  This controller allows requiring the user to enter their previous passcode in first,
  and has passcode validation by requiring them to enter the new passcode twice.
  */
@@ -89,19 +89,31 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, nullable) NSDate *disabledInputDate;
 
 /*
- Create a new instance with the desird light or dark style
-
+ Create a new instance with the desired light or dark style
+ 
  @param style The visual style of the view controller
  */
 - (instancetype)initWithStyle:(TOPasscodeSettingsViewStyle)style;
 
 /*
- Changes the passcode type and animates if required
+ Create a new instance with the desired light or dark style and the options to hide the options button and the warning label
+ 
+ @param style The visual style of the view controller
+ @param hidesOptionButton If the controller should hide the options button
+ @param hidesWarningLabel If the controller should hide the warning label
+ */
+- (instancetype)initWithStyle:(TOPasscodeSettingsViewStyle)style
+            hidesOptionButton:(BOOL)hidesOptionButton
+            hidesWarningLabel:(BOOL)hidesWarningLabel;
 
+/*
+ Changes the passcode type and animates if required
+ 
  @param passcodeType Change the type of passcode to enter.
  @param animated Play a crossfade animation.
  */
 - (void)setPasscodeType:(TOPasscodeType)passcodeType animated:(BOOL)animated;
+
 
 @end
 
