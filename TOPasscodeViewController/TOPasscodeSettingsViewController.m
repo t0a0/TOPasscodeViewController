@@ -229,7 +229,7 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
   // Update text depending on state
   switch (state) {
     case TOPasscodeSettingsViewStateEnterCurrentPasscode:
-      self.titleLabel.text = NSLocalizedString(@"Enter your passcode", @"");
+      self.titleLabel.text = NSLocalizedString(@"Enter your current passcode", @"");
       self.navigationItem.rightBarButtonItem = variableSizePasscode ? self.nextBarButtonItem : nil;
       if (@available(iOS 9.0, *)) {
         self.inputField.returnKeyType = UIReturnKeyContinue;
