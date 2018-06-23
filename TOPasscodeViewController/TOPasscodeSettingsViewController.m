@@ -141,7 +141,7 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
   // Create warning label view
   self.warningLabel = [[TOPasscodeSettingsWarningLabel alloc] initWithFrame:CGRectZero];
   self.warningLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-  self.warningLabel.hidden = YES;
+  self.warningLabel.hidden = self.hidesWarningLabel ? YES : YES;
   [self.warningLabel sizeToFit];
   [self.containerView addSubview:self.warningLabel];
   
@@ -300,7 +300,7 @@ const CGFloat kTOPasscodeKeypadMaxHeight = 330.0f;
   BOOL confirmingPasscode = state == TOPasscodeSettingsViewStateEnterCurrentPasscode;
   
   // Update the warning label
-  self.warningLabel.hidden = !(confirmingPasscode && self.failedPasscodeAttemptCount > 0);
+  self.warningLabel.hidden = self.hidesWarningLabel ? YES : !(confirmingPasscode && self.failedPasscodeAttemptCount > 0);
   self.warningLabel.numberOfWarnings = self.failedPasscodeAttemptCount;
   
   CGRect frame = self.warningLabel.frame;
